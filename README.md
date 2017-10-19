@@ -31,6 +31,12 @@ Run as application
 
 `$ docker run jks-tester -u [target-url] -k [jks-filename] -p [jks-passphrase]`
 
+## Security Considerations
+- Remove/purge volumes after testing to remove JKS from Docker environment
+- Use environment variable for password instead of command line argument  
+`$ JKSPASS=swordfish`  
+`$ docker run jks-tester -u [target-url] -k [jks-filename] -p $JKSPASS`  
+
 ## Usage
 
 | Short | Long | Required? | Description |
