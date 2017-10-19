@@ -11,7 +11,7 @@ Tool for testing JKS connections
 `$ cd jks-tester`  
 `$ nano Dockerfile`  
 
-Add your JKS to the /usr/src/jks-testet directory
+Add your JKS to the /usr/src/jks-tester directory
 
 ```Dockerfile
 FROM openjdk:7
