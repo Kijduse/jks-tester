@@ -23,7 +23,7 @@ RUN javac -cp .:commons-cli-1.3.1.jar Client.java
 ENTRYPOINT ["java", "-cp", ".:commons-cli-1.3.1.jar", "Client"]
 ```
 
-Build the image
+Save and close. Build the image
 
 `$ docker build -t jks-tester .`  
 
