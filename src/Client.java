@@ -68,9 +68,7 @@ class Client {
     SSLSocketFactory sslsocketfactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
 
     try{
-      //URL url = new URL("https://origin.api.thomsonprjuat.co.uk/st2/flightOffers/flightOffers_v1");
-      //URL url = new URL("https://origin.api.thomsonprjuat.co.uk/st2/flightOffers/flightOffers_v1?getFlightOffersRequest={\"flightOffersRequest\":{\"xmlns\":\"http://tuiuk.com/xsd/flights/flightoffers/v1\",\"searchMode\":\"RETURN\",\"numOfAdults\":2,\"numOfChildren\":0,\"currencyCode\":\"GBP\",\"originAirportCodes\":[\"LGW\",\"MAN\"],\"destAirportCodes\":[\"SFB\"],\"depDate\":\"2017-08-30\",\"returnDate\":\"2017-09-06\",\"directFlightInd\":true,\"cabinClassCode\":\"PREMIUMECONOMY\"}}");
-
+      
       URL url = new URL( sUrl );
       HttpsURLConnection conn = (HttpsURLConnection)url.openConnection();
 
