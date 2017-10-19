@@ -1,11 +1,17 @@
 # jks-tester
 Tool for testing JKS connections
 
-- ADD JKS to build
+- Copy JKS to build
 - Build container
 - Run container, pass variables to ENTRYPOINT
 
 ## Quickstart
+
+`$ git pull https://github.com/kpark-tibcosoftware/jks-tester.git`  
+`$ cd jks-tester`  
+`$ nano Dockerfile`  
+
+Add your JKS to the /usr/src/jks-testet directory
 
 ```Dockerfile
 FROM openjdk:7
@@ -16,5 +22,20 @@ WORKDIR /usr/src/jks-tester
 RUN javac -cp .:commons-cli-1.3.1.jar Client.java
 ENTRYPOINT ["java", "-cp", ".:commons-cli-1.3.1.jar", "Client"]
 ```
+
+Build the image
+
 `$ docker build -t jks-tester .`  
+
+Run as application 
+
 `$ docker run jks-tester -u [target-url] -k [jks-filename] -p [jks-passphrase]`
+
+## Usage
+
+| Short | Long | Required? | Description |
+|---|---|---|---|
+|-k|--keystore|yes|Name of the JKS file|
+|-p|--password|yes|Passphrase for the JKS file|
+|-u|--url|yes|Target URL to be tested|
+|-v|--verbose|no|Enable verbose output|
