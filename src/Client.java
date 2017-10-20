@@ -17,7 +17,8 @@ class Client {
 
     String keystore = cmd.getOptionValue("keystore");
     String password = cmd.getOptionValue("password");
-
+    if(password == null) password = new String(System.console().readPassword("Enter JKS passphrase: "));
+      
     System.setProperty("javax.net.ssl.trustStoreType", "jks");
     System.setProperty("javax.net.ssl.keyStore", keystore );
     System.setProperty("javax.net.ssl.trustStore", keystore );
@@ -39,7 +40,7 @@ class Client {
 
     oUrl.setRequired(true);
     oKeystore.setRequired(true);
-    oPassword.setRequired(true);
+    oPassword.setRequired(false);
 
     options.addOption(oUrl);
     options.addOption(oKeystore);
@@ -55,7 +56,7 @@ class Client {
       return cmd;
     } catch(ParseException e) {
       System.out.println( e.getMessage() );
-      formatter.printHelp( "client-cert", options );
+      formatter.printHelp( "jks-tester", options );
       System.exit(1);
       return null;
     }
