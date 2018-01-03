@@ -17,8 +17,12 @@ class Client {
 
     String keystore = cmd.getOptionValue("keystore");
     String password = cmd.getOptionValue("password");
+    if(System.console() == null && password == null){
+      System.out.println("No passphrase found. Use interactive mode ('docker run -it ...') if passing passphrase at runtime. Exiting.");
+      System.exit(1);
+    }
     if(password == null) password = new String(System.console().readPassword("Enter JKS passphrase: "));
-      
+
     System.setProperty("javax.net.ssl.trustStoreType", "jks");
     System.setProperty("javax.net.ssl.keyStore", keystore );
     System.setProperty("javax.net.ssl.trustStore", keystore );
@@ -69,7 +73,7 @@ class Client {
     SSLSocketFactory sslsocketfactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
 
     try{
-      
+
       URL url = new URL( sUrl );
       HttpsURLConnection conn = (HttpsURLConnection)url.openConnection();
 
